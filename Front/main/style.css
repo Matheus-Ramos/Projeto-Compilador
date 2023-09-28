@@ -1,0 +1,23 @@
+:root {
+	--bg-primary-color: #6e7fc3;
+	--bg-secondary-color: #352d7e;
+	--bg-tertiary-color: #211640;
+	--bg-gray-color: #313235;
+	--txt-primary-color: #FFFF;
+    --txt-h1: 5rem;
+    --txt-h2: 4rem;
+    --txt-h3: 3rem;
+	--bg-input-transparency: rgba(0, 0, 0, 0.4);
+}
+
+html {
+	color: var(--txt-primary-color);
+    font-size: var(--txt-h1);
+    text-align: center;
+	overflow-x: hidden;
+	background-image: linear-gradient(60deg, var(--bg-tertiary-color) -30%, var(--bg-primary-color) 100%);
+}
+
+.header{
+    border: 2px solid red;
+}
