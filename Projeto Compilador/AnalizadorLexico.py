@@ -74,9 +74,6 @@ class A_Lexico:
         novos_tokens = self.transformacaoTag(tokens_transformados)
         #print(novos_tokens)
         return novos_tokens
-    
-lex = A_Lexico()
-lex.lexico()
 
 ############### Possiveis Melhorias ###############
 #contagem de linhas

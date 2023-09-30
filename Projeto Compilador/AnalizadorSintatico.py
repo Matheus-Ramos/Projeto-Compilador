@@ -1,54 +1,94 @@
-from AnalizadorLexico import A_Lexico
-
-
 class A_Sintatico:
     def __init__(self, tokens):
         self.tokens = tokens
-        self.index = 0  # Variável para rastrear a posição atual na lista de tokens.
+        self.pos = 0
 
-    def match(self, expected_tag):
-        # Função para verificar se o token atual é igual à tag esperada.
-        if self.index < len(self.tokens) and self.tokens[self.index][0] == expected_tag:
-            self.index += 1  # Avança para o próximo token.
+    def erro_sintatico(self):
+        raise SyntaxError(f"Erro sintático: Token inesperado {self.tokens[self.pos]}")
+
+    def match(self, esperado):
+        if self.pos < len(self.tokens) and self.tokens[self.pos][1] == esperado:
+            self.pos += 1
         else:
-            raise SyntaxError(f"Erro de sintaxe: Esperava '{expected_tag}', mas obteve '{self.tokens[self.index][0]}'")
+            self.erro_sintatico()
 
     def programa_SOL(self):
-        self.match('<loop>')  # Espera que o primeiro token seja '<loop>'.
-        self.vezes()  # Chama a função vezes() para processar o número de vezes.
-        self.sequencia()  # Chama a função sequencia() para processar a sequência.
+        self.match('loop')
+        self.vezes()
+        self.sequencia()
 
     def vezes(self):
-        if self.tokens[self.index][0] in [1, 2, 3, 4, 5]:
-            self.match(self.tokens[self.index][0])  # Verifica se o token é um número de vezes válido.
+        if self.tokens[self.pos][0] == '<num>':
+            self.match(self.tokens[self.pos][1])
+        elif self.tokens[self.pos][1] in ['1', '2', '3', '4', '5']:
+            self.match(self.tokens[self.pos][1])
         else:
-            raise SyntaxError("Erro de sintaxe: Esperava um número de vezes válido")
+            print("teste")
+        
 
     def sequencia(self):
-        self.Present()  # Chama a função Present() para processar a parte 'Present'.
-        self.tempo()  # Chama a função tempo() para processar o tempo.
-        while self.tokens[self.index][0] == 'navegador':
-            self.match('navegador')  # Verifica se há um navegador.
-            self.tempo()  # Chama a função tempo() novamente para processar o tempo.
-            self.match(';')  # Verifica se há um ponto e vírgula no final.
+        if self.tokens[self.pos][1] == 'Present':
+            self.match('Present')
+            self.Present()
+        elif self.tokens[self.pos][1] == 'fases_EPIC':
+            self.fases_EPIC()
+        else:
+            self.erro_sintatico()
+
+    def fases_EPIC(self):
+        self.match('Explore')
+        self.Explore()
+        self.match('Present')
+        self.Present()
+        self.match('Interact')
+        self.Interact()
+        self.match('Critique')
+        self.Critique()
+        
+    def Explore(self):
+        self.match('navegar')
+        self.tempo()
+        self.match(';')
+
+    def Present(self):
+        choice = self.tokens[self.pos][1]
+        if choice in ['visualizar_pdf', 'visualizar_vídeo', 'videoconferência']:
+            self.match(choice)
+            self.tempo()
+            self.match(';')
+        else:
+            self.erro_sintatico()
+
+    def Interact(self):
+        choice = self.tokens[self.pos][1]
+        if choice in ['whatsapp_web', 'email', 'videoconferência']:
+            self.match(choice)
+            self.tempo()
+            self.match(';')
+        else:
+            self.erro_sintatico()
+
+    def Critique(self):
+        choice = self.tokens[self.pos][1]
+        if choice in ['whatsapp_web', 'email', 'videoconferência']:
+            self.match(choice)
+            self.tempo()
+            self.match(';')
+        else:
+            self.erro_sintatico()
 
     def tempo(self):
-        if self.tokens[self.index][0] in ['20_min', '1_hora', '1_dia', '2_dias', 'sem limite', '15_min']:
-            self.match(self.tokens[self.index][0])  # Verifica se o token é um valor de tempo válido.
+        if self.tokens[self.pos][1] in ['15_min', '20_min', '1_hora', '1_dia', '2_dias', 'sem limite']:
+            self.match(self.tokens[self.pos][1])
         else:
-            raise SyntaxError("Erro de sintaxe: Esperava um valor de tempo válido")
+            self.erro_sintatico()
 
     def parse(self):
         try:
-            self.programa_SOL()  # Inicia a análise sintática a partir do programa_SOL.
-            if self.index == len(self.tokens):
-                print("Análise sintática bem-sucedida")  # Se todos os tokens foram processados com sucesso.
+            self.programa_SOL()
+            if self.pos == len(self.tokens):
+                print("Análise sintática bem-sucedida.")
             else:
-                raise SyntaxError("Erro de sintaxe: Tokens extras após o programa")  # Tokens extras não processados.
+                self.erro_sintatico()
         except SyntaxError as e:
-            print(e)
-
-lex = A_Lexico()
-tokens = lex.lexico()
-parser = A_Sintatico(tokens)
-parser.parse()  # Inicia a análise sintática.
+            print(str(e))
