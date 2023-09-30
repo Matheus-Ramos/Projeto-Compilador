@@ -20,8 +20,6 @@ class A_Lexico:
                 tokens.append((self.ehDigito(palavra), palavra))
                 palavra = ''
             else:
-                if (entrada[letra] == '_'):
-                    palavra += entrada[letra]
                 if (entrada[letra] == ';'):
                     if (entrada[letra-1].isspace()) and (entrada[letra+1].isspace()):
                         palavra += entrada[letra]
@@ -36,7 +34,7 @@ class A_Lexico:
                     elif (not(entrada[letra+1].isspace())):
                         tokens.append((self.ehDigito(';'), ';'))
                         palavra = ''
-                if entrada[letra].isalnum():
+                if (entrada[letra] == '_') or (entrada[letra].isalnum()):
                     palavra += entrada[letra]
         return tokens
     
@@ -69,7 +67,7 @@ class A_Lexico:
 
     def lexico(self):
         tokens = self.leitura()
-        #print(tokens)
+        print(tokens)
         tokens_transformados = self.transformacaoNumerica(tokens)
         #print(tokens_transformados)
         novos_tokens = self.transformacaoTag(tokens_transformados)
