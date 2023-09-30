@@ -67,15 +67,13 @@ class A_Lexico:
 
     def lexico(self):
         tokens = self.leitura()
-        print(tokens)
+        #print(tokens)
         tokens_transformados = self.transformacaoNumerica(tokens)
         #print(tokens_transformados)
         novos_tokens = self.transformacaoTag(tokens_transformados)
         #print(novos_tokens)
         return novos_tokens
     
-lex = A_Lexico()
-lex.lexico()
 
 ############### Possiveis Melhorias ###############
 #contagem de linhas
