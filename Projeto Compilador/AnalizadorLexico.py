@@ -1,4 +1,5 @@
-import re 
+import re
+
 
 class A_Lexico:
     
