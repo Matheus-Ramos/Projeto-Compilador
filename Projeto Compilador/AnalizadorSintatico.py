@@ -1,4 +1,4 @@
 class A_Sintatico:
     
-    def sintatico():
+    def sintatico(self, tokens):
         pass
