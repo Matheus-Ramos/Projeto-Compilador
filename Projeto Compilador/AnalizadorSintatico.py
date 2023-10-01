@@ -1,53 +1,111 @@
 from selenium import webdriver
 from whatsapp_api import WhatsApp
 
+
 class A_Sintatico:
-    
     def __init__(self, tokens):
         self.tokens = tokens
-        self.index = 0  # Variável para rastrear a posição atual na lista de tokens.
+        self.pos = 0
 
-    def match(self, expected_tag):
-        # Função para verificar se o token atual é igual à tag esperada.
-        if self.index < len(self.tokens) and self.tokens[self.index][0] == expected_tag:
-            self.index += 1  # Avança para o próximo token.
+    def erro_sintatico(self):
+        raise SyntaxError(f"Erro sintático: Token inesperado {self.tokens[self.pos]}")
+
+    def match(self, esperado):
+        if self.pos < len(self.tokens) and self.tokens[self.pos][1] == esperado:
+            self.pos += 1
         else:
-            raise SyntaxError(f"Erro de sintaxe: Esperava '{expected_tag}', mas obteve '{self.tokens[self.index][0]}'")
+            self.erro_sintatico()
 
     def programa_SOL(self):
-        self.index += 1
-        self.match('<loop>')  # Espera que o primeiro token seja '<loop>'.
-        self.vezes()  # Chama a função vezes() para processar o número de vezes.
-        self.sequencia()  # Chama a função sequencia() para processar a sequência.
+        self.match('programa_SOL')
+        self.match('loop')
+        self.vezes()
+        self.sequencia()
 
     def vezes(self):
-        if self.tokens[self.index][1] in [1, 2, 3, 4, 5]:
-            self.match(self.tokens[self.index][0])  # Verifica se o token é um número de vezes válido.
+        if self.tokens[self.pos][0] == '<num>':
+            self.match(self.tokens[self.pos][1])
+        elif self.tokens[self.pos][1] in ['1', '2', '3', '4', '5']:
+            self.match(self.tokens[self.pos][1])
         else:
-            raise SyntaxError("Erro de sintaxe: Esperava um número de vezes válido")
+            self.erro_sintatico()
+        
 
     def sequencia(self):
-        self.Present()  # Chama a função Present() para processar a parte 'Present'.
-        self.tempo()  # Chama a função tempo() para processar o tempo.
-        while self.tokens[self.index][0] == 'navegador':
-            self.match('navegador')  # Verifica se há um navegador.
-            self.tempo()  # Chama a função tempo() novamente para processar o tempo.
-            self.match(';')  # Verifica se há um ponto e vírgula no final.
-    
+        choice = self.tokens[self.pos][1]
+        if choice == 'Present':
+            self.match(choice)
+            self.Present()
+        elif choice == 'fases_EPIC':
+            self.match(choice)
+            self.fases_EPIC()
+        else:
+            self.erro_sintatico()
+
     def fases_EPIC(self):
-        pass
-    
+        self.Explore()
+        self.Present()
+        self.Interact()
+        self.Critique()
+        
     def Explore(self):
-        pass
-    
+        self.navegar()
+        self.tempo()
+        self.match(';')
+
     def Present(self):
-        pass
-    
+        choice = self.tokens[self.pos][1]
+        if choice in ['visualizar_pdf', 'visualizar_vídeo', 'videoconferência']:
+            self.match(choice)
+            if choice == 'visualizar_pdf':
+                self.visualizar_pdf()
+            elif choice == 'visualizar_vídeo':
+                self.visualizar_video()
+            elif choice == 'videoconferência':
+                self.videoconferencia()
+            
+            self.tempo()
+            self.match(';')
+        else:
+            self.erro_sintatico()
+
     def Interact(self):
-        pass
-    
+        choice = self.tokens[self.pos][1]
+        if choice in ['whatsapp_web', 'email', 'videoconferência']:
+            self.match(choice)
+            if choice == 'whatsapp_web':
+                self.whatsapp_web()
+            elif choice == 'email':
+                self.email()
+            elif choice == 'videoconferência':
+                self.videoconferencia()
+            
+            self.tempo()
+            self.match(';')
+        else:
+            self.erro_sintatico()
+
     def Critique(self):
-        pass
+        choice = self.tokens[self.pos][1]
+        if choice in ['whatsapp_web', 'email', 'videoconferência']:
+            self.match(choice)
+            if choice == 'whatsapp_web':
+                self.whatsapp_web()
+            elif choice == 'email':
+                self.email()
+            elif choice == 'videoconferência':
+                self.videoconferencia()
+            
+            self.tempo()
+            self.match(';')
+        else:
+            self.erro_sintatico()
+
+    def tempo(self):
+        if self.tokens[self.pos][1] in ['15_min', '20_min', '1_hora', '1_dia', '2_dias', 'sem_limite']:
+            self.match(self.tokens[self.pos][1])
+        else:
+            self.erro_sintatico()
     
     def navegar(self):
         self.browser()
@@ -66,7 +124,7 @@ class A_Sintatico:
     
     def whatsapp_web(self):
         self.browser()
-        self.link_whatsapp_web
+        self.link_whatsapp_web()
     
     def email(self):
         self.browser()
@@ -81,29 +139,26 @@ class A_Sintatico:
         pass
     
     def link_video(self):
-        pass
+        chrome = webdriver.Chrome()
+        chrome.get('https://youtube.com')
     
     def link_videoconferencia(self):
-        pass
+        chrome = webdriver.Chrome()
+        chrome.get('https://meet.google.com')
     
     def link_whatsapp_web(self):
         wp = WhatsApp()
     
     def link_email(self):
-        pass
-
-    def tempo(self):
-        if self.tokens[self.index][1] in ['20_min', '1_hora', '1_dia', '2_dias', 'sem limite', '15_min']:
-            self.match(self.tokens[self.index][0])  # Verifica se o token é um valor de tempo válido.
-        else:
-            raise SyntaxError("Erro de sintaxe: Esperava um valor de tempo válido")
+        chrome = webdriver.Chrome()
+        chrome.get('https://gmail.com')
 
     def parse(self):
         try:
-            self.programa_SOL()  # Inicia a análise sintática a partir do programa_SOL.
-            if self.index == len(self.tokens):
-                print("Análise sintática bem-sucedida")  # Se todos os tokens foram processados com sucesso.
+            self.programa_SOL()
+            if self.pos == len(self.tokens):
+                print("Análise sintática bem-sucedida.")
             else:
-                raise SyntaxError("Erro de sintaxe: Tokens extras após o programa")  # Tokens extras não processados.
+                self.erro_sintatico()
         except SyntaxError as e:
-            print(e)
+            print(str(e))
