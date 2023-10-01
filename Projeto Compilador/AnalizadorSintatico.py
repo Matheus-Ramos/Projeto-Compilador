@@ -88,26 +88,37 @@ class A_Sintatico:
             self.erro_sintatico()
     
     def navegar(self):
+        self.match('browser')
         self.browser()
     
     def visualizar_pdf(self):
+        self.match('browser')
         self.browser()
+        self.match('link_pdf')
         self.link_pdf()
     
     def visualizar_video(self):
+        self.match('browser')
         self.browser()
+        self.match('link_video')
         self.link_video()
     
     def videoconferencia(self):
+        self.match('browser')
         self.browser()
+        self.match('link_videoconferencia')
         self.link_videoconferencia()
     
     def whatsapp_web(self):
+        self.match('browser')
         self.browser()
+        self.match('link_whatsapp_web')
         self.link_whatsapp_web
     
     def email(self):
+        self.match('browser')
         self.browser()
+        self.match('link_email')
         self.link_email()
     
     def browser(self):
