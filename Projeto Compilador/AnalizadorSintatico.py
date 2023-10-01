@@ -1,3 +1,5 @@
+import webbrowser
+
 from selenium import webdriver
 from whatsapp_api import WhatsApp
 
@@ -29,7 +31,6 @@ class A_Sintatico:
             self.match(self.tokens[self.pos][1])
         else:
             self.erro_sintatico()
-        
 
     def sequencia(self):
         choice = self.tokens[self.pos][1]
@@ -102,7 +103,7 @@ class A_Sintatico:
             self.erro_sintatico()
 
     def tempo(self):
-        if self.tokens[self.pos][1] in ['15_min', '20_min', '1_hora', '1_dia', '2_dias', 'sem_limite']:
+        if self.tokens[self.pos][1] in ['15_min', '20_min', '1_hora', '1_dia', '2_dias', 'sem limite']:
             self.match(self.tokens[self.pos][1])
         else:
             self.erro_sintatico()
@@ -136,7 +137,8 @@ class A_Sintatico:
         chrome.get('https://google.com')
     
     def link_pdf(self):
-        pass
+        caminho_pdf = 'Programas de Teste.pdf'
+        webbrowser.open(caminho_pdf)
     
     def link_video(self):
         chrome = webdriver.Chrome()
