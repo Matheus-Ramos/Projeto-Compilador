@@ -1,3 +1,6 @@
+from selenium import webdriver
+from whatsapp_api import WhatsApp
+
 class A_Sintatico:
     
     def __init__(self, tokens):
@@ -47,25 +50,32 @@ class A_Sintatico:
         pass
     
     def navegar(self):
-        pass
+        self.browser()
     
     def visualizar_pdf(self):
-        pass
+        self.browser()
+        self.link_pdf()
     
     def visualizar_video(self):
-        pass
+        self.browser()
+        self.link_video()
     
     def videoconferencia(self):
-        pass
+        self.browser()
+        self.link_videoconferencia()
     
     def whatsapp_web(self):
-        pass
+        self.browser()
+        self.link_whatsapp_web
     
     def email(self):
-        pass
+        self.browser()
+        self.link_email()
     
     def browser(self):
-        pass
+        self.match('navegador')
+        chrome = webdriver.Chrome()
+        chrome.get('https://google.com')
     
     def link_pdf(self):
         pass
@@ -77,13 +87,13 @@ class A_Sintatico:
         pass
     
     def link_whatsapp_web(self):
-        pass
+        wp = WhatsApp()
     
     def link_email(self):
         pass
 
     def tempo(self):
-        if self.tokens[self.index][0] in ['20_min', '1_hora', '1_dia', '2_dias', 'sem limite', '15_min']:
+        if self.tokens[self.index][1] in ['20_min', '1_hora', '1_dia', '2_dias', 'sem limite', '15_min']:
             self.match(self.tokens[self.index][0])  # Verifica se o token é um valor de tempo válido.
         else:
             raise SyntaxError("Erro de sintaxe: Esperava um valor de tempo válido")
