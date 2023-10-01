@@ -1,7 +1,6 @@
 from selenium import webdriver
 from whatsapp_api import WhatsApp
 
-
 class A_Sintatico:
     def __init__(self, tokens):
         self.tokens = tokens
@@ -30,7 +29,6 @@ class A_Sintatico:
         else:
             self.erro_sintatico()
         
-
     def sequencia(self):
         choice = self.tokens[self.pos][1]
         if choice == 'Present':
