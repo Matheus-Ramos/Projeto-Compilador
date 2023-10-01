@@ -11,5 +11,5 @@ simbolosNTerminais = ['programa_SOL', 'vezes', 'sequência', 'Present', 'tempo',
 lex = alx.A_Lexico()
 tokens = lex.lexico()
 
-sin = ast.A_Sintatico()
-sin.sintatico(tokens)
+parser = ast.A_Sintatico(tokens)
+parser.parse() # Inicia a análise sintática.
