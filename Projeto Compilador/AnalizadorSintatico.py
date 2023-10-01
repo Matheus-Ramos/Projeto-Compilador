@@ -87,8 +87,7 @@ class A_Sintatico:
         pass
     
     def link_whatsapp_web(self):
-        #wp = WhatsApp()
-        pass
+        wp = WhatsApp()
     
     def link_email(self):
         pass
