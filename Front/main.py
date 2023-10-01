@@ -11,7 +11,9 @@ def receber_dados():
     try:
         data = request.get_json()  # Obter dados JSON da solicitação
         # Faça o processamento dos dados aqui
-        #print(jsonify(data))
+
+        # Retorno com quebra de linha para o front end
+        data['mensagem'] = data['mensagem'].replace("\n", "<br>")
         return jsonify(data)
     except Exception as e:
         print("-------------------Exception")

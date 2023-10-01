@@ -10,25 +10,22 @@
 	--bg-input-transparency: rgba(0, 0, 0, 0.4);
 }
 
-html {
+body {
 	color: var(--txt-primary-color);
     font-size: var(--txt-h1);
-    text-align: center;
 	overflow-x: hidden;
 	background-image: linear-gradient(60deg, var(--bg-tertiary-color) -30%, var(--bg-primary-color) 100%);
 	background-repeat: no-repeat;
+	background-size:cover;
+	background-attachment: fixed;
 }
 
-.header{
-    border: 2px solid red;
-}
-
-.main{
+.centered{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	width: 100dvw;
-	
+	gap: 1rem;
 }
 
 #textCod{

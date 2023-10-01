@@ -16,8 +16,7 @@ document.getElementById('inputCod').addEventListener('submit', function (e) {
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data.mensagem);
-        document.getElementById('resposta').textContent = data.mensagem;
+        document.getElementById('resposta').innerHTML = data.mensagem;
     })
     .catch(error => {
         console.error('Erro:', error);

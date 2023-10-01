@@ -9,21 +9,21 @@
 </head>
 
 <body>
-    <h1>Com Py lador</h1>
-
-    <form id="inputCod">
-        <div class="main">
-            <label for="cod">Digite o código:</label>
-            <br>
-            <textarea id="textCod"></textarea>
-            <br>
-            <button type="submit">Enviar</button>
+    <div class="">
+        <p style="text-align: center;font-size: 6rem;">Com Py lador</p>
+        <form id="inputCod">
+            <div class="centered">
+                <label for="cod">Digite o código:</label>
+                <textarea id="textCod"></textarea>
+                <button type="submit">Enviar</button>
+            </div>
+        </form>
+    </div>
+    
+    <div class="centered">
+        <p>Retorno:</p>
+        <div id="resposta">
         </div>
-    </form>
-
-    <div class="main">
-        <h2>Retorno:</h2>
-        <div id="resposta"></div>
     </div>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
