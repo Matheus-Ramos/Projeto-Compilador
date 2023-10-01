@@ -1,6 +1,7 @@
 from selenium import webdriver
 from whatsapp_api import WhatsApp
 
+
 class A_Sintatico:
     def __init__(self, tokens):
         self.tokens = tokens
@@ -27,14 +28,19 @@ class A_Sintatico:
         elif self.tokens[self.pos][1] in ['1', '2', '3', '4', '5']:
             self.match(self.tokens[self.pos][1])
         else:
-            print("teste")
+            self.erro_sintatico()
         
 
     def sequencia(self):
-        if self.tokens[self.pos+3][1] == 'navegador':
-            self.fases_EPIC()
-        elif
+        choice = self.tokens[self.pos][1]
+        if choice == 'Present':
+            self.match(choice)
             self.Present()
+        elif choice == 'fases_EPIC':
+            self.match(choice)
+            self.fases_EPIC()
+        else:
+            self.erro_sintatico()
 
     def fases_EPIC(self):
         self.Explore()
@@ -51,11 +57,11 @@ class A_Sintatico:
         choice = self.tokens[self.pos][1]
         if choice in ['visualizar_pdf', 'visualizar_vídeo', 'videoconferência']:
             self.match(choice)
-            if choice == 'visualizar_pdf'
+            if choice == 'visualizar_pdf':
                 self.visualizar_pdf()
-            elif choice == 'visualizar_vídeo'
+            elif choice == 'visualizar_vídeo':
                 self.visualizar_video()
-            elif choice == 'videoconferência'
+            elif choice == 'videoconferência':
                 self.videoconferencia()
             
             self.tempo()
@@ -67,11 +73,11 @@ class A_Sintatico:
         choice = self.tokens[self.pos][1]
         if choice in ['whatsapp_web', 'email', 'videoconferência']:
             self.match(choice)
-            if choice == 'whatsapp_web'
+            if choice == 'whatsapp_web':
                 self.whatsapp_web()
-            elif choice == 'email'
+            elif choice == 'email':
                 self.email()
-            elif choice == 'videoconferência'
+            elif choice == 'videoconferência':
                 self.videoconferencia()
             
             self.tempo()
@@ -83,11 +89,11 @@ class A_Sintatico:
         choice = self.tokens[self.pos][1]
         if choice in ['whatsapp_web', 'email', 'videoconferência']:
             self.match(choice)
-            if choice == 'whatsapp_web'
+            if choice == 'whatsapp_web':
                 self.whatsapp_web()
-            elif choice == 'email'
+            elif choice == 'email':
                 self.email()
-            elif choice == 'videoconferência'
+            elif choice == 'videoconferência':
                 self.videoconferencia()
             
             self.tempo()
@@ -133,16 +139,19 @@ class A_Sintatico:
         pass
     
     def link_video(self):
-        pass
+        chrome = webdriver.Chrome()
+        chrome.get('https://youtube.com')
     
     def link_videoconferencia(self):
-        pass
+        chrome = webdriver.Chrome()
+        chrome.get('https://meet.google.com')
     
     def link_whatsapp_web(self):
         wp = WhatsApp()
     
     def link_email(self):
-        pass
+        chrome = webdriver.Chrome()
+        chrome.get('https://gmail.com')
 
     def parse(self):
         try:
