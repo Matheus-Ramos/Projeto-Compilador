@@ -4,9 +4,9 @@
 	--bg-tertiary-color: #211640;
 	--bg-gray-color: #313235;
 	--txt-primary-color: #FFFF;
-    --txt-h1: 5rem;
-    --txt-h2: 4rem;
-    --txt-h3: 3rem;
+    --txt-h1: 4rem;
+    --txt-h2: 3rem;
+    --txt-h3: 2rem;
 	--bg-input-transparency: rgba(0, 0, 0, 0.4);
 }
 
@@ -16,8 +16,23 @@ html {
     text-align: center;
 	overflow-x: hidden;
 	background-image: linear-gradient(60deg, var(--bg-tertiary-color) -30%, var(--bg-primary-color) 100%);
+	background-repeat: no-repeat;
 }
 
 .header{
     border: 2px solid red;
+}
+
+.main{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100dvw;
+	
+}
+
+#textCod{
+	width: 800px;
+	min-height: 200px;
+	resize: none;
 }
