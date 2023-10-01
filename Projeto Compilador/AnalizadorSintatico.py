@@ -16,7 +16,7 @@ class A_Sintatico:
             self.erro_sintatico()
 
     def programa_SOL(self):
-        self.index += 1
+        self.pos += 1
         self.match('loop')
         self.vezes()
         self.sequencia()
