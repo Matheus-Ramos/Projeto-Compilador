@@ -1,5 +1,4 @@
 from selenium import webdriver
-from whatsapp_api import WhatsApp
 
 class A_Sintatico:
     def __init__(self, tokens):
@@ -145,7 +144,8 @@ class A_Sintatico:
         chrome.get('https://meet.google.com')
     
     def link_whatsapp_web(self):
-        wp = WhatsApp()
+        chrome = webdriver.Chrome()
+        chrome.get('https://web.whatsapp.com')
     
     def link_email(self):
         chrome = webdriver.Chrome()
