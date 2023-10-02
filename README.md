@@ -8,4 +8,4 @@ instale:
 - '''pip install selenium'''
 - '''pip install flask'''
 Faça o build da aplicação e rode.
-Abra no navegador o servidor orientado pelo console
+Abra no navegador o servidor orientado pelo console.
