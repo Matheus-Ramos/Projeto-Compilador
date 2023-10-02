@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Compilador</title>
+</head>
+
+<body>
+    <div class="">
+        <p style="text-align: center;font-size: 6rem;">Com Py lador</p>
+        <form id="inputCod">
+            <div class="centered">
+                <label for="cod">Digite o código:</label>
+                <textarea id="textCod"></textarea>
+                <button type="submit">Enviar</button>
+            </div>
+        </form>
+    </div>
+    
+    <div class="centered">
+        <p>Retorno:</p>
+        <div id="resposta">
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
