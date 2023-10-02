@@ -70,7 +70,7 @@ class A_Lexico:
         tokens_transformados = self.transformacaoNumerica(tokens)
         #print(tokens_transformados)
         novos_tokens = self.transformacaoTag(tokens_transformados)
-        #print(novos_tokens)
+        print(novos_tokens)
         return novos_tokens
     
 

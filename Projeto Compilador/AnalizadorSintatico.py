@@ -12,8 +12,10 @@ class A_Sintatico:
         raise SyntaxError(f"Erro sintático: Token inesperado {self.tokens[self.pos]}")
 
     def match(self, esperado):
+        print(f"Token a ser analisado: {self.tokens[self.pos][1]}\n")
         if self.pos < len(self.tokens) and self.tokens[self.pos][1] == esperado:
             self.pos += 1
+            print("Token aprovado!\n")
         else:
             self.erro_sintatico()
 

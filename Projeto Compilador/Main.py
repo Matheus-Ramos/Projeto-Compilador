@@ -26,7 +26,7 @@ def receber_dados():
         
         parser = ast.A_Sintatico(tokens)
 
-        results = "Léxico: \n" + "\n".join([str(token) for token in tokens])
+        results = "Léxico: \n" + "\n".join([str(token).replace('<', '&lt;').replace('>', '&gt;') for token in tokens])
         results += "\nSintático:\n"  + str(parser.parse()) # Inicia a análise sintática.
 
         # Retorno com quebra de linha para o front end
