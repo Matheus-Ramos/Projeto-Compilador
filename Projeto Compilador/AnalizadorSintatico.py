@@ -275,9 +275,8 @@ class A_Sintatico:
     def parse(self):
         try:
             self.programa_SOL()
-            if self.pos == len(self.tokens):
-                print("Análise sintática bem-sucedida.")
-            else:
+            if self.pos != len(self.tokens):
                 self.erro_sintatico()
+            return "Análise sintática bem-sucedida."
         except SyntaxError as e:
-            print(str(e))
+            return (str(e))

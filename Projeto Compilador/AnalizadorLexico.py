@@ -8,8 +8,8 @@ class A_Lexico:
         else:
             return '<str>'
             
-    def leitura(self):
-        entrada = input()
+    def leitura(self, data):
+        entrada = data
         entrada += ' '
         #entrada.split()
         palavra = ''
@@ -65,9 +65,8 @@ class A_Lexico:
                 tokens_transformados.append((tag, palavra))
         return tokens_transformados
 
-    def lexico(self):
-        tokens = self.leitura()
-        #print(tokens)
+    def lexico(self, data):
+        tokens = self.leitura(data)
         tokens_transformados = self.transformacaoNumerica(tokens)
         #print(tokens_transformados)
         novos_tokens = self.transformacaoTag(tokens_transformados)
