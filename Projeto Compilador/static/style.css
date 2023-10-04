@@ -7,10 +7,23 @@
     --txt-h1: 4rem;
     --txt-h2: 3rem;
     --txt-h3: 2rem;
+	--txt-size: 1rem;
 	--bg-input-transparency: rgba(0, 0, 0, 0.4);
 }
 
+*{
+	box-sizing: border-box;
+	font-family: monospace;
+	text-wrap: wrap;
+	word-wrap: break-word;
+	margin: 0;
+	padding: 0;
+}
+
 body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	color: var(--txt-primary-color);
     font-size: var(--txt-h1);
 	overflow-x: hidden;
@@ -20,7 +33,16 @@ body {
 	background-attachment: fixed;
 }
 
-.centered{
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 90dvw;
+	gap: 3rem;
+	margin-top: 3rem;
+}
+
+#inputCod{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -29,10 +51,11 @@ body {
 }
 
 #textCod{
-	width: 800px;
+	width: 80dvw;
 	min-height: 200px;
 	resize: none;
 	border-radius: 15px;
+	padding: 10px;
 }
 
 .btnStyled{
@@ -41,12 +64,21 @@ body {
 	border-radius: 5px;
 	width: auto;
 	color: #FFFF;
-	font-size: 1rem;
-	font-weight: 600;
+	font-size: var(--txt-size);
+	font-weight: bold;
 	cursor: pointer;
 	padding: .5rem 1rem;
 }
 
 .btnStyled:hover{
 	filter:drop-shadow(0px 0px .1rem rgba(255, 255, 255, 0.5));
+}
+
+/* Estilo do console */
+.console {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+	width: 80dvw;
 }

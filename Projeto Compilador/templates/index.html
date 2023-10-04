@@ -9,20 +9,15 @@
 </head>
 
 <body>
-    <div class="">
-        <p style="text-align: center;font-size: 6rem;">Com Py lador</p>
+    <div class="container">
+        <p style="text-align: center;font-size: 6rem;">ComPylador</p>
         <form id="inputCod">
-            <div class="centered">
-                <label for="cod">Digite o código:</label>
-                <textarea id="textCod"></textarea>
-                <button class="btnStyled" type="submit">Enviar</button>
-            </div>
+            <label style="text-align: center" for="cod">Área de código:</label>
+            <textarea id="textCod" name="inputArea"></textarea>
+            <button class="btnStyled" type="submit">Enviar</button>
         </form>
-    </div>
-    
-    <div class="centered">
-        <p>Retorno:</p>
-        <div id="resposta">
+        <div class="console">
+            <p><span id="resposta"></span></p>
         </div>
     </div>
 

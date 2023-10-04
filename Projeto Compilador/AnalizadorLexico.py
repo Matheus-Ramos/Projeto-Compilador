@@ -68,9 +68,7 @@ class A_Lexico:
     def lexico(self, data):
         tokens = self.leitura(data)
         tokens_transformados = self.transformacaoNumerica(tokens)
-        #print(tokens_transformados)
         novos_tokens = self.transformacaoTag(tokens_transformados)
-        print(novos_tokens)
         return novos_tokens
     
 

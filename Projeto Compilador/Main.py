@@ -18,25 +18,20 @@ def home():
 @app.route('/api/receber-dados', methods=['POST'])
 def receber_dados():
     try:
-        data = request.get_json()  # Obter dados JSON da solicitação
-
+        data = request.data.decode("utf-8") # Obter dados da solicitação
         # Faz o processamento dos dados aqui
         lex = alx.A_Lexico()
         tokens = lex.lexico(data) # Inicia a análise léxica.
-        
         parser = ast.A_Sintatico(tokens)
 
-        results = "Léxico: \n" + "\n".join([str(token).replace('<', '&lt;').replace('>', '&gt;') for token in tokens])
+        results = "Léxico: \n" + "".join([str(token).replace('<', '&lt;').replace('>', '&gt;')+"\n" for token in tokens])
         results += "\nSintático:\n"  + str(parser.parse()) # Inicia a análise sintática.
 
         # Retorno com quebra de linha para o front end
-
-        return jsonify(results.replace("\n", "<br>"))
+        return results.replace("\n", "<br>")
     
     except Exception as e:
-        print("-------------------Exception")
-        return jsonify(str(e))  # Responder com um erro se a análise do JSON falhar
-
+        return str(e)
 
 if __name__ == '__main__':
     app.run(debug=True)

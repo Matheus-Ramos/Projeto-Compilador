@@ -8,13 +8,10 @@ document.getElementById('inputCod').addEventListener('submit', function (e) {
     };
 
     fetch('/api/receber-dados', {
-        method: 'POST', 
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(textCod)
+        method: 'POST',
+        body: dados.mensagem
     })
-    .then(response => response.json())
+    .then(response => response.text())
     .then(data => {
         document.getElementById('resposta').innerHTML = data;
     })
