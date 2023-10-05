@@ -25,13 +25,15 @@ def receber_dados():
         parser = ast.A_Sintatico(tokens)
 
         results = "Léxico: \n" + "".join([str(token).replace('<', '&lt;').replace('>', '&gt;')+"\n" for token in tokens])
-        results += "\nSintático:\n"  + str(parser.parse()) # Inicia a análise sintática.
+        results += "\nSintático:\n" + parser.parse() # Inicia a análise sintática.
 
         # Retorno com quebra de linha para o front end
         return results.replace("\n", "<br>")
     
     except Exception as e:
-        return str(e)
+        results = "Léxico: \n" + "".join([str(token).replace('<', '&lt;').replace('>', '&gt;')+"\n" for token in tokens])
+        results += str(e)
+        return results.replace("\n", "<br>")
 
 if __name__ == '__main__':
     app.run(debug=True)
