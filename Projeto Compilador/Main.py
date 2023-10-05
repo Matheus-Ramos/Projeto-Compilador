@@ -1,6 +1,7 @@
 import AnalizadorLexico as alx
 import AnalizadorSintatico as ast
-from flask import Flask, render_template, request, jsonify, send_from_directory
+from flask import Flask, render_template, request
+import os
 
 app = Flask(__name__)
 
@@ -18,11 +19,13 @@ def home():
 @app.route('/api/receber-dados', methods=['POST'])
 def receber_dados():
     try:
+        os.system('cls')
         data = request.data.decode("utf-8") # Obter dados da solicitação
         # Faz o processamento dos dados aqui
         lex = alx.A_Lexico()
         tokens = lex.lexico(data) # Inicia a análise léxica.
         parser = ast.A_Sintatico(tokens)
+
 
         results = "Léxico: \n" + "".join([str(token).replace('<', '&lt;').replace('>', '&gt;')+"\n" for token in tokens])
         results += "\nSintático:\n" + parser.parse() # Inicia a análise sintática.

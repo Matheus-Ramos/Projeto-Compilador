@@ -1,5 +1,6 @@
 import time
 from selenium import webdriver
+import os
 
 class A_Sintatico:
     
@@ -229,9 +230,9 @@ class A_Sintatico:
     def link_pdf(self):
         if self.chrome is None:
             self.erro_sintatico()
-        
-        caminho_pdf = 'Projeto Compilador\Programas de Teste.pdf'
-        self.chrome.get(caminho_pdf)
+        caminho_relativo = 'Programas de Teste.pdf'
+        caminho_absoluto = os.path.abspath(caminho_relativo)
+        self.chrome.get(caminho_absoluto)
 
     def link_video(self):
         if self.chrome is None:
